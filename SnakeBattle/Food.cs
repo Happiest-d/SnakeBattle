@@ -6,7 +6,7 @@ namespace SnakeBattle
 	{
 		public Food(Point position)
 		{
-			Color = Color.Green;
+			Color = Color.Blue;
 			Permeable = true;
 			Position = position;
 		}
