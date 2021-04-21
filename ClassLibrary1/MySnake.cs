@@ -40,6 +40,11 @@ namespace MySnake
                 {
                     frameField[enemyTail.X, enemyTail.Y] = 2;
                 }
+                //если враг короче - он еда
+                if (snake.Tail.Count() > enemy.Tail.Count())
+                {
+                    food.Add(enemy.Position);
+                }
             }
 
             foreach (var f in food)
@@ -127,7 +132,7 @@ namespace MySnake
             try
             {
                 _pathToFood = PathNode.FindPath(ref _frameField, snake.Position, _posFood);
-                GC.Collect();
+                //GC.Collect();
                 _predict = MovingSnake(_pathToFood[1], snake.Position);
                 Direction = (Move)_predict;
             }
@@ -182,7 +187,7 @@ namespace MySnake
                         node.EstimateFullPathLength).First();
                     if (currentNode.Position == goal)
                     {
-                        GC.Collect();
+                        //GC.Collect();
                         return GetPathForNode(currentNode);
                     }
 
@@ -204,7 +209,7 @@ namespace MySnake
                     }
                 }
 
-                GC.Collect();
+                //GC.Collect();
                 return null;
             }
 
